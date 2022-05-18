@@ -1,6 +1,8 @@
 package com.threegold.sort;
 
 import java.util.Arrays;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * 插入排序
@@ -12,7 +14,8 @@ import java.util.Arrays;
 public class InsertSort {
     public static void main(String[] args) {
         int[] arr = { 101, 34, 119, 1 };
-        insertSort(arr);
+        // insertSort(arr);
+        testSpeed();
     }
 
     public static void insertSort(int[] arr) {
@@ -23,9 +26,11 @@ public class InsertSort {
                 arr[insertIndex + 1] = arr[insertIndex];
                 insertIndex--;
             }
-            arr[insertIndex + 1] = insertVal;
-            System.out.printf("第 %d 轮插入后\n", i);
-            System.out.println(Arrays.toString(arr));
+            if (insertIndex + 1 != i) { // 说明当前插入位置就是正确的位置
+                arr[insertIndex + 1] = insertVal;
+            }
+            // System.out.printf("第 %d 轮插入后\n", i);
+            // System.out.println(Arrays.toString(arr));
         }
     }
 
@@ -39,8 +44,8 @@ public class InsertSort {
         }
         // 当退出 while 时，说明插入位置找到
         arr[insertIndex + 1] = insertVal;
-        System.out.println("第 1 轮插入后");
-        System.out.println(Arrays.toString(arr));
+        // System.out.println("第 1 轮插入后");
+        // System.out.println(Arrays.toString(arr));
 
         // 第 2 轮
         insertVal = arr[2];
@@ -66,5 +71,17 @@ public class InsertSort {
     }
 
     public static void testSpeed() {
+        int[] arr = new int[80000];
+        for (int i = 0; i < 80000; i++) {
+            arr[i] = (int) (Math.random() * 80000);
+        }
+        Date start = new Date();
+        SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String startDate = sFormat.format(start);
+        System.out.println(startDate);
+        insertSort(arr);
+        Date end = new Date();
+        String endDate = sFormat.format(end);
+        System.out.println(endDate);
     }
 }
