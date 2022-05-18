@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
  */
 public class ShellSort {
     public static void main(String[] args) {
-        int[] arr = { 8, 9, 1, 7, 2, 3, 5, 4, 6, 0 };
+        // int[] arr = { 8, 9, 1, 7, 2, 3, 5, 4, 6, 0 };
         // shellSort_change(arr);
         testSpeed();
     }
@@ -83,6 +83,30 @@ public class ShellSort {
         }
     }
 
+    /**
+     * 希尔排序 —— 移动法 (更高效)
+     * 
+     * @param arr
+     */
+    public static void shellSort_move(int[] arr) {
+        // 增量 gap，逐步缩小增量
+        for (int gap = arr.length / 2; gap > 0; gap /= 2) {
+            // 从第 gap 个元素，逐个对其所在的组直接插入排序
+            for (int i = gap; i < arr.length; i++) {
+                int j = i;
+                int tmp = arr[j]; // 待插入的数
+                if (arr[j] < arr[j - gap]) {
+                    // NOTES: 插入排序的写法
+                    while (j - gap >= 0 && tmp < arr[j - gap]) {
+                        arr[j] = arr[j - gap];
+                        j = j - gap;
+                    }
+                    arr[j] = tmp;
+                }
+            }
+        }
+    }
+
     public static void testSpeed() {
         int[] arr = new int[80000];
         for (int i = 0; i < 80000; i++) {
@@ -92,7 +116,8 @@ public class ShellSort {
         SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String startDate = sFormat.format(start);
         System.out.println(startDate);
-        shellSort_change(arr);
+        // shellSort_change(arr);
+        shellSort_move(arr);
         Date end = new Date();
         String endDate = sFormat.format(end);
         System.out.println(endDate);
