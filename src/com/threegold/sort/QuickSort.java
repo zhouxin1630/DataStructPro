@@ -15,13 +15,6 @@ public class QuickSort {
         testSpeed();
     }
 
-    /**
-     * 快速排序非递归的写法
-     * 
-     * @param arr
-     * @param lo
-     * @param hi
-     */
     public static void quickSort(int[] arr, int lo, int hi) {
         int left = lo;
         int right = hi;
