@@ -8,7 +8,7 @@ package com.threegold.search;
  */
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] arr = { 1, 8, 10, 89, 1000, 1234 };
+        int[] arr = { 1, 8, 10, 89, 1000, 1000, 1000, 1234 };
         test(arr, 0, arr.length - 1, 12345);
         // int index = binarySearch(arr, 0, arr.length - 1, 1234);
         // System.out.println(index);
