@@ -13,8 +13,7 @@ import java.util.Date;
 public class BubbleSort {
     public static void main(String[] args) {
         /*
-
-                int[] arr = { 3, 9, -1, 10, -2 };
+        int[] arr = { 3, 9, -1, 10, -2 };
         System.out.printf("排序前：%s\n", Arrays.toString(arr));
         bubbleSort(arr);
         System.out.printf("排序后：%s\n", Arrays.toString(arr));
